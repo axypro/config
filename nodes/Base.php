@@ -39,6 +39,18 @@ abstract class Base implements \axy\config\INode
     abstract protected function childList();
 
     /**
+     * Constructor
+     *
+     * @param strign $path
+     * @param \axy\config\IRootNode $root
+     */
+    public function __construct($path, \axy\config\IRootNode $root = null)
+    {
+        $this->path = $path;
+        $this->root = $root;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function getPath()
@@ -145,7 +157,7 @@ abstract class Base implements \axy\config\INode
         if (\array_key_exists($key, $this->childs)) {
             return true;
         }
-        if ($this->list !== null) {
+        if ($this->loaded) {
             return false;
         }
         return $this->childExists($key);

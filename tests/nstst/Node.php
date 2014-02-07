@@ -9,8 +9,8 @@ class Node extends \axy\config\nodes\Base
 {
     public function __construct($path = '', $level = 0)
     {
-        $this->path = $path;
         $this->level = $level;
+        parent::__construct($path);
     }
 
     protected function childGet($key)
