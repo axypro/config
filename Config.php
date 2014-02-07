@@ -60,7 +60,7 @@ class Config
      */
     public function isPlatformExists($name)
     {
-
+        return ($this->finder->getFilename($name) !== null);
     }
 
     /**

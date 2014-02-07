@@ -39,4 +39,14 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
         \sort($list);
         $this->assertEquals(['base', 'dev', 'one', 'two'], $list);
     }
+
+    /**
+     * @covers ::isPlatformExists
+     */
+    public function testIsPlatformExists()
+    {
+        $config = $this->createConfig();
+        $this->assertTrue($config->isPlatformExists('dev'));
+        $this->assertFalse($config->isPlatformExists('undev'));
+    }
 }
