@@ -1,4 +1,7 @@
-config
-======
+# axy\config
 
-Access to the system configuration (PHP)
+Access to the system configuration
+
+Uses PHP 5.4+
+
+Under construction

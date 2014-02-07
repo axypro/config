@@ -1,0 +1,27 @@
+{
+    "name": "axy/config",
+    "type": "library",
+    "description": "Access to the system configuration",
+    "keywords": [
+        "Config",
+        "Configuration"
+    ],
+    "homepage": "https://github.com/axypro/config",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Oleg Grigoriev",
+            "email": "go.vasac@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "axy/magic": "~0.1.4",
+        "axy/errors": "~0.0.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "axy\\config\\": ""
+        }
+    }
+}
