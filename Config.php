@@ -5,6 +5,9 @@
 
 namespace axy\config;
 
+use axy\config\helpers\finders\Dirs;
+use axy\config\errors\SettingsInvalidFormat;
+
 /**
  * The config (a container of platforms)
  *
@@ -20,7 +23,11 @@ class Config
      */
     public function __construct(array $settings)
     {
-
+        if (!isset($settings['dir'])) {
+            throw new SettingsInvalidFormat('config settings', 'required dir');
+        }
+        $this->dir = $settings['dir'];
+        $this->finder = new Dirs($this->dir);
     }
 
     /**
@@ -36,13 +43,13 @@ class Config
     }
 
     /**
-     * Returns the list of available platform
+     * Returns the list of available platforms
      *
      * @return array
      */
-    public function getListPlatfoms()
+    public function getListPlatforms()
     {
-
+        return $this->finder->getList();
     }
 
     /**
@@ -55,4 +62,14 @@ class Config
     {
 
     }
+
+    /**
+     * @var string
+     */
+    private $dir;
+
+    /**
+     * @var \axy\config\helpers\finders\Dirs
+     */
+    private $finder;
 }
