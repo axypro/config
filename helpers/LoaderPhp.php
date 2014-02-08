@@ -54,7 +54,7 @@ class LoaderPhp
     public function load()
     {
         $data = include($this->filename);
-        if ($this->merge && $this->getparent) {
+        if (\is_array($data) && $this->merge && $this->getparent) {
             $parent = \call_user_func($this->getparent);
             $data = Merger::merge($parent, $data);
         }
