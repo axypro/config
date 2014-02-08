@@ -173,4 +173,27 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
         ];
         $this->assertEquals($expected, $two->getValue());
     }
+
+    /**
+     * @covers ::getConfigForPlatform
+     */
+    public function testLoader()
+    {
+        $container = new Config(['dir' => __DIR__.'/nstst/config-m']);
+        $config = $container->getConfigForPlatform('dev');
+        $expected = [
+            'one' => [
+                'c' => 11,
+            ],
+            'two' => [
+                'b' => 3,
+            ],
+            'three' => [
+                'a' => 1,
+                'b' => 3,
+                'c' => 11,
+            ],
+        ];
+        $this->assertEquals($expected, $config->getValue());
+    }
 }

@@ -107,20 +107,23 @@ class Root extends Base implements IRootNode
      */
     protected function childGetData($key)
     {
+        $parent = $this->getParentPlatform();
         $filename = $this->finder->getFilename($key);
         if ($filename !== null) {
-            $child = include($filename);
-            if (\is_array($child)) {
-                $parent = $this->getParentPlatform();
-                if ($parent && $parent->childExists($key)) {
-                    $parvalue = $parent->childGetData($key);
-                    if (\is_array($parvalue)) {
-                        $child = \array_replace_recursive($parvalue, $child);
+            if ($parent) {
+                $getparent = function () use ($parent, $key) {
+                    if (!$parent->childExists($key)) {
+                        return null;
                     }
-                }
+                    return $parent->childGetData($key);
+                };
+            } else {
+                $getparent = null;
             }
-        } elseif ($this->getParentPlatform()) {
-            $child = $this->parent->childGetData($key);
+            $loader = new LoaderPhp($filename, $getparent);
+            $child = $loader->load();
+        } elseif ($parent) {
+            $child = $parent->childGetData($key);
         } else {
             \assert('false', 'a child must exist');
         }
