@@ -53,6 +53,7 @@ class LoaderPhp
      */
     public function load()
     {
+        Log::write('include:'.$this->filename);
         $data = include($this->filename);
         if (\is_array($data) && $this->merge && $this->getparent) {
             $parent = \call_user_func($this->getparent);

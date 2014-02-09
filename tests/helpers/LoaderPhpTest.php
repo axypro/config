@@ -6,6 +6,7 @@
 namespace axy\config\tests\helpers;
 
 use axy\config\helpers\LoaderPhp;
+use axy\config\helpers\Log;
 
 /**
  * @coversDefaultClass axy\config\helpers\LoaderPhp
@@ -23,6 +24,7 @@ class LoaderTest extends \PHPUnit_Framework_TestCase
      */
     public function testLoad($file, $parent, $expected)
     {
+        Log::reset();
         $filename = __DIR__.'/../nstst/loader/'.$file.'.php';
         if ($parent !== null) {
             $getparent = function () use ($parent) {
@@ -38,6 +40,10 @@ class LoaderTest extends \PHPUnit_Framework_TestCase
         } else {
             $this->assertSame($expected, $actual);
         }
+        $expected = [
+            'include:'.$filename,
+        ];
+        $this->assertEquals($expected, Log::get());
     }
 
     /**

@@ -6,20 +6,24 @@
 namespace axy\config\tests;
 
 use axy\config\Config;
+use axy\config\helpers\Log;
 
 /**
  * @coversDefaultClass axy\config\Config
  */
 class ConfigTest extends \PHPUnit_Framework_TestCase
 {
+    protected $dir;
+
     /**
      * @param callable $defparent [optional]
      * @return \axy\config\Config
      */
     private function createConfig($defparent = null)
     {
+        $this->dir = __DIR__.'/nstst/config';
         $settings = [
-            'dir' => __DIR__.'/nstst/config',
+            'dir' => $this->dir,
         ];
         if ($defparent) {
             $settings['defparent'] = $defparent;
@@ -41,10 +45,15 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetListPlatforms()
     {
+        Log::reset();
         $config = $this->createConfig();
         $list = $config->getListPlatforms();
         \sort($list);
         $this->assertEquals(['base', 'dev', 'one', 'two'], $list);
+        $expected = [
+            'glob:'.$this->dir.'/*',
+        ];
+        $this->assertEquals($expected, Log::get());
     }
 
     /**
@@ -52,9 +61,17 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsPlatformExists()
     {
+        Log::reset();
         $config = $this->createConfig();
         $this->assertTrue($config->isPlatformExists('dev'));
         $this->assertFalse($config->isPlatformExists('undev'));
+        $this->assertTrue($config->isPlatformExists('dev'));
+        $this->assertFalse($config->isPlatformExists('undev'));
+        $expected = [
+            'is_dir:'.$this->dir.'/dev',
+            'is_dir:'.$this->dir.'/undev',
+        ];
+        $this->assertEquals($expected, Log::get());
     }
 
     /**
@@ -71,6 +88,7 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
      */
     public function testRootPlatform()
     {
+        Log::reset();
         $container = $this->createConfig();
         $config = $container->getConfigForPlatform('base');
         $this->assertInstanceOf('axy\config\IRootNode', $config);
@@ -97,6 +115,14 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
         ];
         $this->assertSame($config, $config->getRootNode());
         $this->assertSame($config, $config->arr->arr->b->getRootNode());
+        $expected = [
+            'is_dir:'.$this->dir.'/base',
+            'is_file:'.$this->dir.'/base/scalar.php',
+            'include:'.$this->dir.'/base/scalar.php',
+            'is_file:'.$this->dir.'/base/arr.php',
+            'include:'.$this->dir.'/base/arr.php',
+        ];
+        $this->assertEquals($expected, Log::get());
     }
 
     /**
@@ -127,6 +153,7 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
             'null' => null,
             'n' => [1, 2],
         ];
+        $this->assertEquals($expected, $config->getValue());
     }
 
     /**
@@ -195,5 +222,26 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
             ],
         ];
         $this->assertEquals($expected, $config->getValue());
+    }
+
+    /**
+     * @covers ::getConfigForPlatform
+     */
+    public function testCacheData()
+    {
+        $container = $this->createConfig();
+        $base = $container->getConfigForPlatform('base');
+        $one = $container->getConfigForPlatform('one');
+        Log::reset();
+        $one->get('arr');
+        $expected = [
+            'is_file:'.$this->dir.'/one/arr.php',
+            'include:'.$this->dir.'/one/arr.php',
+            'is_file:'.$this->dir.'/base/arr.php',
+            'include:'.$this->dir.'/base/arr.php',
+        ];
+        $this->assertEquals($expected, Log::get(true));
+        $base->get('arr');
+        $this->assertEquals([], Log::get(true));
     }
 }

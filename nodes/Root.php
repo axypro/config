@@ -107,6 +107,9 @@ class Root extends Base implements IRootNode
      */
     protected function childGetData($key)
     {
+        if (\array_key_exists($key, $this->datas)) {
+            return $this->datas[$key];
+        }
         $parent = $this->getParentPlatform();
         $filename = $this->finder->getFilename($key);
         if ($filename !== null) {
@@ -127,6 +130,7 @@ class Root extends Base implements IRootNode
         } else {
             \assert('false', 'a child must exist');
         }
+        $this->datas[$key] = $child;
         return $child;
     }
 
@@ -154,4 +158,9 @@ class Root extends Base implements IRootNode
      * @var \axy\config\helpers\finders\Files
      */
     private $finder;
+
+    /**
+     * @var array
+     */
+    private $datas = [];
 }
