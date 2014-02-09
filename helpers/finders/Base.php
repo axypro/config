@@ -35,11 +35,12 @@ abstract class Base
         if (\array_key_exists($name, $this->cache)) {
             return $this->cache[$name];
         }
-        if ($this->list !== null) {
-            $this->cache[$name] = null;
+        if ($this->list === null) {
+            $filename = $this->createFilename($name);
+            $result = $this->checkExists($filename) ? $filename : null;
+        } else {
+            $result = null;
         }
-        $filename = $this->createFilename($name);
-        $result = $this->checkExists($filename) ? $filename : null;
         $this->cache[$name] = $result;
         return $result;
     }

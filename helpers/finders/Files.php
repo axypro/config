@@ -5,6 +5,8 @@
 
 namespace axy\config\helpers\finders;
 
+use axy\config\helpers\Log;
+
 /**
  * The finder of nested files
  *
@@ -39,6 +41,7 @@ class Files extends Base
      */
     protected function checkExists($filename)
     {
+        Log::write('is_file:'.$filename);
         return \is_file($filename);
     }
 
@@ -47,7 +50,9 @@ class Files extends Base
      */
     protected function loadAllItems()
     {
-        $result = \glob($this->dir.'/*'.$this->suffix);
+        $pattern = $this->dir.'/*'.$this->suffix;
+        Log::write('glob:'.$pattern);
+        $result = \glob($pattern);
         if ($this->suffix === '') {
             $copy = $result;
             $result = [];

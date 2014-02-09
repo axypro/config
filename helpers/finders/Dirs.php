@@ -5,6 +5,8 @@
 
 namespace axy\config\helpers\finders;
 
+use axy\config\helpers\Log;
+
 /**
  * The finder of nested directories
  *
@@ -25,6 +27,7 @@ class Dirs extends Base
      */
     protected function checkExists($filename)
     {
+        Log::write('is_dir:'.$filename);
         return \is_dir($filename);
     }
 
@@ -33,6 +36,8 @@ class Dirs extends Base
      */
     protected function loadAllItems()
     {
-        return \glob($this->dir.'/*', \GLOB_ONLYDIR);
+        $pattern = $this->dir.'/*';
+        Log::write('glob:'.$pattern);
+        return \glob($pattern, \GLOB_ONLYDIR);
     }
 }
