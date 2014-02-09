@@ -9,6 +9,7 @@ use axy\config\Config;
 use axy\config\IRootNode;
 use axy\config\helpers\finders\Files;
 use axy\config\helpers\LoaderPhp;
+use axy\config\helpers\SetterLoader;
 
 class Root extends Base implements IRootNode
 {
@@ -124,7 +125,9 @@ class Root extends Base implements IRootNode
                 $getparent = null;
             }
             $loader = new LoaderPhp($filename, $getparent);
+            SetterLoader::push($loader);
             $child = $loader->load();
+            SetterLoader::pop();
         } elseif ($parent) {
             $child = $parent->childGetData($key);
         } else {

@@ -206,7 +206,18 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
      */
     public function testLoader()
     {
-        $container = new Config(['dir' => __DIR__.'/nstst/config-m']);
+        $settings = [
+            'dir' => __DIR__.'/nstst/config-m',
+            'defparent' => function ($name) {
+                if ($name === 'base') {
+                    return null;
+                } elseif ($name === 'dev') {
+                    return 'int';
+                }
+                return 'base';
+            },
+        ];
+        $container = new Config($settings);
         $config = $container->getConfigForPlatform('dev');
         $expected = [
             'one' => [
@@ -219,6 +230,10 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
                 'a' => 1,
                 'b' => 3,
                 'c' => 11,
+            ],
+            'four' => [
+                'c' => 4,
+                'd' => 5,
             ],
         ];
         $this->assertEquals($expected, $config->getValue());

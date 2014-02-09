@@ -27,7 +27,7 @@ class LoaderPhp
     }
 
     /**
-     * Config should not merge (called from config)
+     * The config should not merge (called from config)
      */
     public function notMerge()
     {
@@ -38,7 +38,7 @@ class LoaderPhp
      * Returns a parent value
      *
      * @param boolean $notmerge [optional]
-     *        config should not merge
+     *        a config should not merge
      */
     public function getParent($notmerge = true)
     {

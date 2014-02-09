@@ -3,5 +3,5 @@
 \axy\config\Loader::notMerge();
 
 return [
-    'c' => 11,
+    'c' => 4,
 ];

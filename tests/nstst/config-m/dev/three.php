@@ -1,6 +1,6 @@
 <?php
 
-$parent = $this->getParent(false);
+$parent = \axy\config\Loader::getParent(false);
 
 return [
     'b' => $parent['a'] + $parent['b'],
