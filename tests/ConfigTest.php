@@ -206,16 +206,17 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
      */
     public function testLoader()
     {
+        $defparent = function ($name) {
+            if ($name === 'base') {
+                return null;
+            } elseif ($name === 'dev') {
+                return 'int';
+            }
+            return 'base';
+        };
         $settings = [
             'dir' => __DIR__.'/nstst/config-m',
-            'defparent' => function ($name) {
-                if ($name === 'base') {
-                    return null;
-                } elseif ($name === 'dev') {
-                    return 'int';
-                }
-                return 'base';
-            },
+            'defparent' => $defparent,
         ];
         $container = new Config($settings);
         $config = $container->getConfigForPlatform('dev');
