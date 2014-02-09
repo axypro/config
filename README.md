@@ -4,7 +4,7 @@ Access to the system configuration (PHP).
 
 ### Documentation
 
-[Documentation in Russian](https://github.com/axypro/callbacks/wiki/ru)
+[Documentation in Russian](https://github.com/axypro/config/wiki/ru)
 
 ### Install
 
