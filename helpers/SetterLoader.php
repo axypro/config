@@ -31,7 +31,7 @@ class SetterLoader extends Loader
     {
         $loader = self::$loader;
         if (!empty(self::$stack)) {
-            self::$loader = \array_pop(self::$stack);
+            self::$loader = array_pop(self::$stack);
         }
         return $loader;
     }

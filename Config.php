@@ -50,7 +50,7 @@ class Config
                 throw new PlatformNotExists($name, null, $this);
             }
             if ($this->defparent) {
-                $parentname = \call_user_func($this->defparent, $name);
+                $parentname = call_user_func($this->defparent, $name);
             } else {
                 $parentname = ($name === 'base') ? null : 'base';
             }

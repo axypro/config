@@ -31,7 +31,7 @@ class Node extends \axy\config\nodes\Base
 
     protected function childExists($key)
     {
-        return \in_array($key, ['one', 'two', 'three']);
+        return in_array($key, ['one', 'two', 'three']);
     }
 
     protected function childList()

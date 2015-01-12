@@ -48,7 +48,7 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
         Log::reset();
         $config = $this->createConfig();
         $list = $config->getListPlatforms();
-        \sort($list);
+        sort($list);
         $this->assertEquals(['base', 'dev', 'one', 'two'], $list);
         $expected = [
             'glob:'.$this->dir.'/*',

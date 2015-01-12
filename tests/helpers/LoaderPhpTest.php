@@ -35,7 +35,7 @@ class LoaderTest extends \PHPUnit_Framework_TestCase
         }
         $loader = new LoaderPhp($filename, $getparent);
         $actual = $loader->load();
-        if (\is_array($expected)) {
+        if (is_array($expected)) {
             $this->assertEquals($expected, $actual);
         } else {
             $this->assertSame($expected, $actual);

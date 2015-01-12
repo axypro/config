@@ -42,7 +42,7 @@ class Files extends Base
     protected function checkExists($filename)
     {
         Log::write('is_file:'.$filename);
-        return \is_file($filename);
+        return is_file($filename);
     }
 
     /**
@@ -52,12 +52,12 @@ class Files extends Base
     {
         $pattern = $this->dir.'/*'.$this->suffix;
         Log::write('glob:'.$pattern);
-        $result = \glob($pattern);
+        $result = glob($pattern);
         if ($this->suffix === '') {
             $copy = $result;
             $result = [];
             foreach ($copy as $item) {
-                if (\is_file($item) && (\strpos(\basename($item), '.') === false)) {
+                if (is_file($item) && (strpos(basename($item), '.') === false)) {
                     $result[] = $item;
                 }
             }

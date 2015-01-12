@@ -24,8 +24,8 @@ class Merger
      */
     public static function merge($base, $ext)
     {
-        if (\is_array($base) && \is_array($ext)) {
-            return \array_replace_recursive($base, $ext);
+        if (is_array($base) && is_array($ext)) {
+            return array_replace_recursive($base, $ext);
         }
         return $ext;
     }

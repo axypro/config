@@ -32,7 +32,7 @@ abstract class Base
      */
     public function getFilename($name)
     {
-        if (\array_key_exists($name, $this->cache)) {
+        if (array_key_exists($name, $this->cache)) {
             return $this->cache[$name];
         }
         if ($this->list === null) {
@@ -56,7 +56,7 @@ abstract class Base
             return $this->list;
         }
         foreach ($this->loadAllItems() as $filename) {
-            $name = \basename($filename, $this->suffix);
+            $name = basename($filename, $this->suffix);
             $this->cache[$name] = $filename;
         }
         $this->list = [];

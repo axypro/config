@@ -159,6 +159,6 @@ class BaseTest extends \PHPUnit_Framework_TestCase
             'two' => 2,
             'three' => 3,
         ];
-        $this->assertEquals($expected, \iterator_to_array($node));
+        $this->assertEquals($expected, iterator_to_array($node));
     }
 }

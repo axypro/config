@@ -26,7 +26,7 @@ class Data extends Base
      */
     protected function childExists($key)
     {
-        return \array_key_exists($key, $this->data);
+        return array_key_exists($key, $this->data);
     }
 
     /**
@@ -35,7 +35,7 @@ class Data extends Base
     protected function childGet($key)
     {
         $child = $this->data[$key];
-        if (\is_array($child)) {
+        if (is_array($child)) {
             $path = ($this->path !== '') ? $this->path.'.'.$key : $key;
             $child = new self($child, $path, $this->root);
         }
@@ -47,7 +47,7 @@ class Data extends Base
      */
     protected function childList()
     {
-        return \array_keys($this->data);
+        return array_keys($this->data);
     }
 
     /**
@@ -59,8 +59,8 @@ class Data extends Base
             return true;
         }
         foreach ($this->data as $key => $value) {
-            if (!\array_key_exists($key, $this->childs)) {
-                if (\is_array($value)) {
+            if (!array_key_exists($key, $this->childs)) {
+                if (is_array($value)) {
                     $path = ($this->path !== '') ? $this->path.'.'.$key : $key;
                     $value = new self($value, $path, $this->root);
                 }

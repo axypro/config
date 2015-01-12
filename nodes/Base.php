@@ -63,13 +63,13 @@ abstract class Base implements \axy\config\INode
      */
     public function get($path)
     {
-        if (!\is_array($path)) {
-            $path = \explode('.', $path);
+        if (!is_array($path)) {
+            $path = explode('.', $path);
         }
         if (empty($path)) {
             return $this;
         }
-        $key = \array_shift($path);
+        $key = array_shift($path);
         $child = $this->__get($key);
         if (!empty($path)) {
             if ($child instanceof INode) {
@@ -86,13 +86,13 @@ abstract class Base implements \axy\config\INode
      */
     public function exists($path)
     {
-        if (!\is_array($path)) {
-            $path = \explode('.', $path);
+        if (!is_array($path)) {
+            $path = explode('.', $path);
         }
         if (empty($path)) {
             return true;
         }
-        $key = \array_shift($path);
+        $key = array_shift($path);
         if (!$this->__isset($key)) {
             return false;
         }
@@ -137,7 +137,7 @@ abstract class Base implements \axy\config\INode
      */
     public function __get($key)
     {
-        if (\array_key_exists($key, $this->childs)) {
+        if (array_key_exists($key, $this->childs)) {
             return $this->childs[$key];
         }
         if ($this->loaded || (!$this->childExists($key))) {
@@ -154,7 +154,7 @@ abstract class Base implements \axy\config\INode
      */
     public function __isset($key)
     {
-        if (\array_key_exists($key, $this->childs)) {
+        if (array_key_exists($key, $this->childs)) {
             return true;
         }
         if ($this->loaded) {
@@ -187,7 +187,7 @@ abstract class Base implements \axy\config\INode
         if ($this->list === null) {
             $this->list = $this->childList();
         }
-        return \count($this->list);
+        return count($this->list);
     }
 
     /**

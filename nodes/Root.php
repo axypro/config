@@ -83,7 +83,7 @@ class Root extends Base implements IRootNode
     protected function childGet($key)
     {
         $child = $this->childGetData($key);
-        if (\is_array($child)) {
+        if (is_array($child)) {
             $child = new Data($child, $key, $this);
         }
         return $child;
@@ -96,8 +96,8 @@ class Root extends Base implements IRootNode
     {
         $list = $this->finder->getList();
         if ($this->getParentPlatform()) {
-            $diff = \array_diff($this->parent->childList(), $list);
-            $list = \array_merge($list, $diff);
+            $diff = array_diff($this->parent->childList(), $list);
+            $list = array_merge($list, $diff);
         }
         return $list;
     }
@@ -108,7 +108,7 @@ class Root extends Base implements IRootNode
      */
     protected function childGetData($key)
     {
-        if (\array_key_exists($key, $this->datas)) {
+        if (array_key_exists($key, $this->datas)) {
             return $this->datas[$key];
         }
         $parent = $this->getParentPlatform();
@@ -131,7 +131,7 @@ class Root extends Base implements IRootNode
         } elseif ($parent) {
             $child = $parent->childGetData($key);
         } else {
-            \assert('false', 'a child must exist');
+            assert('false', 'a child must exist');
         }
         $this->datas[$key] = $child;
         return $child;

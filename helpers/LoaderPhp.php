@@ -43,7 +43,7 @@ class LoaderPhp
     public function getParent($notmerge = true)
     {
         $this->merge = !$notmerge;
-        return $this->getparent ? \call_user_func($this->getparent) : null;
+        return $this->getparent ? call_user_func($this->getparent) : null;
     }
 
     /**
@@ -55,8 +55,8 @@ class LoaderPhp
     {
         Log::write('include:'.$this->filename);
         $data = include($this->filename);
-        if (\is_array($data) && $this->merge && $this->getparent) {
-            $parent = \call_user_func($this->getparent);
+        if (is_array($data) && $this->merge && $this->getparent) {
+            $parent = call_user_func($this->getparent);
             $data = Merger::merge($parent, $data);
         }
         return $data;

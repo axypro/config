@@ -22,7 +22,7 @@ class MergerTest extends \PHPUnit_Framework_TestCase
     public function testMerge($base, $ext, $expected)
     {
         $actual = Merger::merge($base, $ext);
-        if (\is_array($expected)) {
+        if (is_array($expected)) {
             $this->assertEquals($expected, $actual);
         } else {
             $this->assertSame($expected, $actual);

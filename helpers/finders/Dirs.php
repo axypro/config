@@ -28,7 +28,7 @@ class Dirs extends Base
     protected function checkExists($filename)
     {
         Log::write('is_dir:'.$filename);
-        return \is_dir($filename);
+        return is_dir($filename);
     }
 
     /**
@@ -38,6 +38,6 @@ class Dirs extends Base
     {
         $pattern = $this->dir.'/*';
         Log::write('glob:'.$pattern);
-        return \glob($pattern, \GLOB_ONLYDIR);
+        return glob($pattern, GLOB_ONLYDIR);
     }
 }
