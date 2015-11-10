@@ -5,6 +5,8 @@
 
 namespace axy\config\errors;
 
-class ConfigNodeNotExists extends \axy\errors\FieldNotExist implements Error
+use axy\errors\FieldNotExist;
+
+class ConfigNodeNotExists extends FieldNotExist implements Error
 {
 }

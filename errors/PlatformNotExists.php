@@ -5,7 +5,9 @@
 
 namespace axy\config\errors;
 
-class PlatformNotExists extends \axy\errors\FieldNotExist implements Error
+use axy\errors\FieldNotExist;
+
+class PlatformNotExists extends FieldNotExist implements Error
 {
     /**
      * {@inheritdoc}

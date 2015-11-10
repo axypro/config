@@ -8,6 +8,7 @@ namespace axy\config\nodes;
 
 use axy\config\INode;
 use axy\config\errors\ConfigNodeNotExists;
+use axy\config\IRootNode;
 use axy\errors\ContainerReadOnly;
 
 /**
@@ -44,9 +45,9 @@ abstract class Base implements INode
      * Constructor
      *
      * @param string $path
-     * @param \axy\config\IRootNode $root
+     * @param IRootNode $root
      */
-    public function __construct($path, \axy\config\IRootNode $root = null)
+    public function __construct($path, IRootNode $root = null)
     {
         $this->path = $path;
         $this->root = $root;
@@ -261,7 +262,7 @@ abstract class Base implements INode
     protected $path;
 
     /**
-     * @var \axy\config\IRootNode
+     * @var IRootNode
      */
     protected $root;
 

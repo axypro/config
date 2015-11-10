@@ -115,16 +115,16 @@ class Root extends Base implements IRootNode
         $filename = $this->finder->getFilename($key);
         if ($filename !== null) {
             if ($parent) {
-                $getparent = function () use ($parent, $key) {
+                $getParent = function () use ($parent, $key) {
                     if (!$parent->childExists($key)) {
                         return null;
                     }
                     return $parent->childGetData($key);
                 };
             } else {
-                $getparent = null;
+                $getParent = null;
             }
-            $loader = new LoaderPhp($filename, $getparent);
+            $loader = new LoaderPhp($filename, $getParent);
             SetterLoader::push($loader);
             $child = $loader->load();
             SetterLoader::pop();
@@ -132,6 +132,7 @@ class Root extends Base implements IRootNode
             $child = $parent->childGetData($key);
         } else {
             assert('false', 'a child must exist');
+            $child = null;
         }
         $this->datas[$key] = $child;
         return $child;

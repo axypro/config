@@ -5,6 +5,8 @@
 
 namespace axy\config\nodes;
 
+use axy\config\IRootNode;
+
 /**
  * The node of array
  *
@@ -15,7 +17,7 @@ class Data extends Base
     /**
      * {@inhertitdoc}
      */
-    public function __construct(array $data, $path, \axy\config\IRootNode $root = null)
+    public function __construct(array $data, $path, IRootNode $root = null)
     {
         $this->data = $data;
         parent::__construct($path, $root);

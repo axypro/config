@@ -5,7 +5,9 @@
 
 namespace axy\config\errors;
 
-class SettingsInvalidFormat extends \axy\errors\InvalidConfig implements Error
+use axy\errors\InvalidConfig;
+
+class SettingsInvalidFormat extends InvalidConfig implements Error
 {
 
 }

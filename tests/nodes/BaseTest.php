@@ -109,7 +109,7 @@ class BaseTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerReadonly
      * @param callable $f
-     * @expectedException axy\errors\ContainerReadonly
+     * @expectedException \axy\errors\ContainerReadonly
      */
     public function testReadonly($f)
     {

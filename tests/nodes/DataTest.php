@@ -29,9 +29,11 @@ class DataTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(isset($node->one));
         $this->assertTrue(isset($node->n));
         $this->assertFalse(isset($node->five));
+        /** @noinspection PhpUndefinedFieldInspection */
         $three = $node->three;
         $this->assertSame($three, $node['three']);
         $this->assertSame($three, $node->get('three'));
+        /** @noinspection PhpUndefinedFieldInspection */
         $this->assertSame(6, $node->three->five[1]);
         $this->assertSame(4, $node->get('three.four'));
         $this->assertNull($node->get('n'));
@@ -39,8 +41,10 @@ class DataTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($data, $node->getValue());
         $this->assertSame('empty', $three->get(''));
         $this->assertSame('empty', $node->get('three.'));
+        /** @noinspection PhpUndefinedFieldInspection */
         $this->assertSame('[path.three.five]', (string)$node->three->five);
         $this->setExpectedException('axy\config\errors\ConfigNodeNotExists');
+        /** @noinspection PhpUndefinedFieldInspection */
         return $node->five;
     }
 }

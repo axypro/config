@@ -33,7 +33,7 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
 
     /**
      * covers ::__construct
-     * @expectedException axy\config\errors\SettingsInvalidFormat
+     * @expectedException \axy\config\errors\SettingsInvalidFormat
      */
     public function testConstruct()
     {
@@ -76,7 +76,7 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
 
     /**
      * covers ::getConfigForPlatform
-     * @expectedException axy\config\errors\PlatformNotExists
+     * @expectedException \axy\config\errors\PlatformNotExists
      */
     public function testErrorPlatformNotExists()
     {
@@ -100,19 +100,6 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(1, $config->arr->arr->a);
         $this->assertSame(2, $config->get('arr.arr.b.1'));
         $this->assertSame('arr.arr.b', $config->arr->arr->b->getPath());
-        $expected = [
-            'arr' => [
-                'one' => 'first',
-                'two' => 2,
-                'null' => null,
-                'arr' => [
-                    'a' => 1,
-                    'b' => [1, 2, 3],
-                ],
-            ],
-            'scalar' => 'base',
-            'null' => null,
-        ];
         $this->assertSame($config, $config->getRootNode());
         $this->assertSame($config, $config->arr->arr->b->getRootNode());
         $expected = [
