@@ -18,7 +18,7 @@ class Files extends Base
      * Constructor
      *
      * @param string $dir
-     * @param string $exp [optional]
+     * @param string $ext [optional]
      */
     public function __construct($dir, $ext = null)
     {

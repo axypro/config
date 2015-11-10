@@ -19,7 +19,7 @@ use axy\errors\ContainerReadOnly;
 abstract class Base implements INode
 {
     /**
-     * Returst a child node
+     * Returns a child node
      *
      * @param string $key
      * @return \axy\config\INode
@@ -29,6 +29,7 @@ abstract class Base implements INode
     /**
      * Checks if a child node is exist
      *
+     * @param string $key
      * @return boolean
      */
     abstract protected function childExists($key);
@@ -254,6 +255,7 @@ abstract class Base implements INode
             $this->childs[$key] = $this->__get($key);
         }
         $this->loaded = true;
+        return true;
     }
 
     /**

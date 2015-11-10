@@ -22,15 +22,15 @@ class Root extends Base implements IRootNode
      *        a platform name
      * @param \axy\config\Config $container
      *        a config container
-     * @param callable $parentname [optional]
+     * @param callable $parentName [optional]
      *        a name of a parent platform
      */
-    public function __construct($dirname, $name, Config $container, $parentname = null)
+    public function __construct($dirname, $name, Config $container, $parentName = null)
     {
         $this->name = $name;
         $this->container = $container;
         $this->finder = new Files($dirname, 'php');
-        $this->parentname = $parentname;
+        $this->parentname = $parentName;
         parent::__construct('', $this);
     }
 
@@ -96,6 +96,7 @@ class Root extends Base implements IRootNode
     {
         $list = $this->finder->getList();
         if ($this->getParentPlatform()) {
+            /** @noinspection PhpUndefinedMethodInspection */
             $diff = array_diff($this->parent->childList(), $list);
             $list = array_merge($list, $diff);
         }
@@ -116,9 +117,11 @@ class Root extends Base implements IRootNode
         if ($filename !== null) {
             if ($parent) {
                 $getParent = function () use ($parent, $key) {
+                    /** @noinspection PhpUndefinedMethodInspection */
                     if (!$parent->childExists($key)) {
                         return null;
                     }
+                    /** @noinspection PhpUndefinedMethodInspection */
                     return $parent->childGetData($key);
                 };
             } else {
@@ -129,6 +132,7 @@ class Root extends Base implements IRootNode
             $child = $loader->load();
             SetterLoader::pop();
         } elseif ($parent) {
+            /** @noinspection PhpUndefinedMethodInspection */
             $child = $parent->childGetData($key);
         } else {
             assert('false', 'a child must exist');

@@ -15,7 +15,11 @@ use axy\config\IRootNode;
 class Data extends Base
 {
     /**
-     * {@inhertitdoc}
+     * The constructor
+     *
+     * @param array $data
+     * @param string $path
+     * @param IRootNode $root
      */
     public function __construct(array $data, $path, IRootNode $root = null)
     {
@@ -70,6 +74,7 @@ class Data extends Base
             }
         }
         $this->loaded = true;
+        return true;
     }
 
     /**

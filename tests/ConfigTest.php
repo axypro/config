@@ -96,11 +96,15 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($container, $config->getConfigContainer());
         $this->assertNull($config->getParentPlatform());
         $this->assertSame($config, $container->getConfigForPlatform('base'));
+        /** @noinspection PhpUndefinedFieldInspection */
         $this->assertSame('base', $config->scalar);
+        /** @noinspection PhpUndefinedFieldInspection */
         $this->assertSame(1, $config->arr->arr->a);
         $this->assertSame(2, $config->get('arr.arr.b.1'));
+        /** @noinspection PhpUndefinedFieldInspection */
         $this->assertSame('arr.arr.b', $config->arr->arr->b->getPath());
         $this->assertSame($config, $config->getRootNode());
+        /** @noinspection PhpUndefinedFieldInspection */
         $this->assertSame($config, $config->arr->arr->b->getRootNode());
         $expected = [
             'is_dir:'.$this->dir.'/base',
@@ -166,6 +170,7 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($dev, $two->getParentPlatform());
         $this->assertSame($base, $two->getParentPlatform()->getParentPlatform());
         $this->assertNull($base->getParentPlatform());
+        /** @noinspection PhpUndefinedFieldInspection */
         $this->assertSame('x', $two->x);
         $arr = [
             'one' => 'dev',
@@ -177,6 +182,7 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
             ],
             'dev' => 'dev',
         ];
+        /** @noinspection PhpUndefinedFieldInspection */
         $this->assertEquals($arr, $two->arr->getValue());
         $expected = [
             'arr' => $arr,

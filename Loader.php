@@ -18,9 +18,8 @@ class Loader
     public static function notMerge()
     {
         if (self::$loader) {
-            return self::$loader->notMerge();
+            self::$loader->notMerge();
         }
-        return null;
     }
 
     /**

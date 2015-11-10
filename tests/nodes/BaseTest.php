@@ -80,13 +80,19 @@ class BaseTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(isset($node->one));
         $this->assertTrue(isset($node->two));
         $this->assertFalse(isset($node->five));
+        /** @noinspection PhpUndefinedFieldInspection */
         $one = $node->one;
         $this->assertInstanceOf('axy\config\INode', $one);
+        /** @noinspection PhpUndefinedFieldInspection */
         $this->assertSame($one, $node->one);
+        /** @noinspection PhpUndefinedFieldInspection */
         $this->assertSame(2, $node->two);
+        /** @noinspection PhpUndefinedFieldInspection */
         $this->assertSame(3, $node->three);
+        /** @noinspection PhpUndefinedFieldInspection */
         $this->assertSame(2, $node->one->two);
         $this->setExpectedException('axy\config\errors\ConfigNodeNotExists');
+        /** @noinspection PhpUndefinedFieldInspection */
         return $node->five;
     }
 
@@ -155,6 +161,7 @@ class BaseTest extends \PHPUnit_Framework_TestCase
     public function testIterator()
     {
         $node = new Node('');
+        /** @noinspection PhpUndefinedFieldInspection */
         $one = $node->one;
         $expected = [
             'one' => $one,

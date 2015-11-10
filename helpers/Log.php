@@ -35,6 +35,7 @@ class Log
      *
      * @param boolean $reset [optional]
      *        get and reset
+     * @return string[]
      */
     public static function get($reset = true)
     {

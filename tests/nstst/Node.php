@@ -5,7 +5,9 @@
 
 namespace axy\config\tests\nstst;
 
-class Node extends \axy\config\nodes\Base
+use axy\config\nodes\Base;
+
+class Node extends Base
 {
     public function __construct($path = '', $level = 0)
     {
@@ -27,6 +29,7 @@ class Node extends \axy\config\nodes\Base
             case 'three':
                 return 3;
         }
+        return null;
     }
 
     protected function childExists($key)
