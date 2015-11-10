@@ -5,7 +5,7 @@
 
 namespace axy\config\tests\node;
 
-use axy\config\tests\nstst\Node;
+use axy\config\tests\tst\Node;
 
 /**
  * coversDefaultClass axy\config\nodes\Base

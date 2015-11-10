@@ -3,7 +3,7 @@
  * @package axy\config
  */
 
-namespace axy\config\tests\nstst;
+namespace axy\config\tests\tst;
 
 class LoaderMock
 {

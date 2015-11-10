@@ -21,7 +21,7 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
      */
     private function createConfig($defparent = null)
     {
-        $this->dir = __DIR__.'/nstst/config';
+        $this->dir = __DIR__.'/tst/config';
         $settings = [
             'dir' => $this->dir,
         ];
@@ -208,7 +208,7 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
             return 'base';
         };
         $settings = [
-            'dir' => __DIR__.'/nstst/config-m',
+            'dir' => __DIR__.'/tst/config-m',
             'defparent' => $defparent,
         ];
         $container = new Config($settings);

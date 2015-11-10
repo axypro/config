@@ -7,7 +7,7 @@ namespace axy\config\tests;
 
 use axy\config\Loader;
 use axy\config\helpers\SetterLoader;
-use axy\config\tests\nstst\LoaderMock;
+use axy\config\tests\tst\LoaderMock;
 
 class LoaderTest extends \PHPUnit_Framework_TestCase
 {

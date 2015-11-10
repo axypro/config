@@ -25,7 +25,7 @@ class LoaderTest extends \PHPUnit_Framework_TestCase
     public function testLoad($file, $parent, $expected)
     {
         Log::reset();
-        $filename = __DIR__.'/../nstst/loader/'.$file.'.php';
+        $filename = __DIR__.'/../tst/loader/'.$file.'.php';
         if ($parent !== null) {
             $getparent = function () use ($parent) {
                 return $parent;

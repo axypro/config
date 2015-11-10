@@ -19,7 +19,7 @@ class FilesTest extends \PHPUnit_Framework_TestCase
     public function testGetFilename()
     {
         Log::reset();
-        $dir = realpath(__DIR__.'/../../nstst/finders');
+        $dir = realpath(__DIR__.'/../../tst/finders');
         $finder = new Files($dir, 'txt');
         $this->assertSame($dir.'/one.txt', $finder->getFilename('one'));
         $this->assertSame($dir.'/two.txt', $finder->getFilename('two'));
@@ -44,7 +44,7 @@ class FilesTest extends \PHPUnit_Framework_TestCase
     public function testGetList()
     {
         Log::reset();
-        $dir = realpath(__DIR__.'/../../nstst/finders');
+        $dir = realpath(__DIR__.'/../../tst/finders');
         $finder = new Files($dir, 'txt');
         $list = $finder->getList();
         sort($list);
@@ -67,7 +67,7 @@ class FilesTest extends \PHPUnit_Framework_TestCase
      */
     public function testEmptyExt()
     {
-        $dir = realpath(__DIR__.'/../../nstst/finders');
+        $dir = realpath(__DIR__.'/../../tst/finders');
         $finder = new Files($dir);
         $this->assertSame($dir.'/four', $finder->getFilename('four'));
         $this->assertNull($finder->getFilename('one'));
