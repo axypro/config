@@ -9,12 +9,12 @@ use axy\config\helpers\finders\Files;
 use axy\config\helpers\Log;
 
 /**
- * @coversDefaultClass axy\config\helpers\finders\Files
+ * coversDefaultClass axy\config\helpers\finders\Files
  */
 class FilesTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers ::getFilename
+     * covers ::getFilename
      */
     public function testGetFilename()
     {
@@ -39,7 +39,7 @@ class FilesTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::getList
+     * covers ::getList
      */
     public function testGetList()
     {
@@ -62,8 +62,8 @@ class FilesTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::getFilename
-     * @covers ::getList
+     * covers ::getFilename
+     * covers ::getList
      */
     public function testEmptyExt()
     {

@@ -1,19 +1,21 @@
 <?php
 /**
  * @package axy\config
+ * @author Oleg Grigoriev <go.vasac@gmail.com>
  */
 
 namespace axy\config\nodes;
 
-use \axy\config\INode;
+use axy\config\INode;
 use axy\config\errors\ConfigNodeNotExists;
+use axy\errors\ContainerReadOnly;
 
 /**
  * The basic class of config nodes
  *
- * @author Oleg Grigoriev <go.vasac@gmail.com>
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
-abstract class Base implements \axy\config\INode
+abstract class Base implements INode
 {
     /**
      * Returst a child node
@@ -41,7 +43,7 @@ abstract class Base implements \axy\config\INode
     /**
      * Constructor
      *
-     * @param strign $path
+     * @param string $path
      * @param \axy\config\IRootNode $root
      */
     public function __construct($path, \axy\config\IRootNode $root = null)
@@ -168,7 +170,7 @@ abstract class Base implements \axy\config\INode
      */
     public function __set($key, $value)
     {
-        throw new \axy\errors\ContainerReadOnly('Config', null, $this);
+        throw new ContainerReadOnly('Config', null, $this);
     }
 
     /**
@@ -176,7 +178,7 @@ abstract class Base implements \axy\config\INode
      */
     public function __unset($key)
     {
-        throw new \axy\errors\ContainerReadOnly('Config', null, $this);
+        throw new ContainerReadOnly('Config', null, $this);
     }
 
     /**
@@ -220,7 +222,7 @@ abstract class Base implements \axy\config\INode
      */
     public function offsetSet($offset, $value)
     {
-        throw new \axy\errors\ContainerReadOnly('Config', null, $this);
+        throw new ContainerReadOnly('Config', null, $this);
     }
 
     /**
@@ -228,7 +230,7 @@ abstract class Base implements \axy\config\INode
      */
     public function offsetUnset($offset)
     {
-        throw new \axy\errors\ContainerReadOnly('Config', null, $this);
+        throw new ContainerReadOnly('Config', null, $this);
     }
 
     /**

@@ -8,12 +8,12 @@ namespace axy\config\tests\helpers;
 use axy\config\helpers\Merger;
 
 /**
- * @coversDefaultClass axy\config\helpers\Merger
+ * coversDefaultClass axy\config\helpers\Merger
  */
 class MergerTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers ::merge
+     * covers ::merge
      * @dataProvider providerMerge
      * @param mixed $base
      * @param mixed $ext

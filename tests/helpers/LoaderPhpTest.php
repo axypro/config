@@ -9,14 +9,14 @@ use axy\config\helpers\LoaderPhp;
 use axy\config\helpers\Log;
 
 /**
- * @coversDefaultClass axy\config\helpers\LoaderPhp
+ * coversDefaultClass axy\config\helpers\LoaderPhp
  */
 class LoaderTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers ::load
-     * @covers ::noMerge
-     * @covers ::getParent
+     * covers ::load
+     * covers ::noMerge
+     * covers ::getParent
      * @dataProvider providerLoad
      * @param string $file
      * @param mixed $parent

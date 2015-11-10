@@ -12,10 +12,10 @@ use axy\config\tests\nstst\LoaderMock;
 class LoaderTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers axy\config\Loader::notMerge
-     * @covers axy\config\Loader::getParent
-     * @covers axy\config\helpers\SetterLoader::push
-     * @covers axy\config\helpers\SetterLoader::pop
+     * covers axy\config\Loader::notMerge
+     * covers axy\config\Loader::getParent
+     * covers axy\config\helpers\SetterLoader::push
+     * covers axy\config\helpers\SetterLoader::pop
      */
     public function testLoader()
     {

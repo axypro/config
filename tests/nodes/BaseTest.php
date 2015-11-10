@@ -8,12 +8,14 @@ namespace axy\config\tests\node;
 use axy\config\tests\nstst\Node;
 
 /**
- * @coversDefaultClass axy\config\nodes\Base
+ * coversDefaultClass axy\config\nodes\Base
+ *
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
 class BaseTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers ::getPath
+     * covers ::getPath
      */
     public function testGetPath()
     {

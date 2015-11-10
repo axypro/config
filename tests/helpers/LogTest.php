@@ -8,14 +8,14 @@ namespace axy\config\tests\helpers;
 use axy\config\helpers\Log;
 
 /**
- * @coversDefaultClass axy\config\helpers\Log
+ * coversDefaultClass axy\config\helpers\Log
  */
 class LogTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers ::write
-     * @covers ::reset
-     * @covers ::get
+     * covers ::write
+     * covers ::reset
+     * covers ::get
      */
     public function testLog()
     {

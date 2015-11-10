@@ -9,7 +9,7 @@ use axy\config\Config;
 use axy\config\helpers\Log;
 
 /**
- * @coversDefaultClass axy\config\Config
+ * coversDefaultClass axy\config\Config
  */
 class ConfigTest extends \PHPUnit_Framework_TestCase
 {
@@ -32,7 +32,7 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__construct
+     * covers ::__construct
      * @expectedException axy\config\errors\SettingsInvalidFormat
      */
     public function testConstruct()
@@ -41,7 +41,7 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::getListPlatforms
+     * covers ::getListPlatforms
      */
     public function testGetListPlatforms()
     {
@@ -57,7 +57,7 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::isPlatformExists
+     * covers ::isPlatformExists
      */
     public function testIsPlatformExists()
     {
@@ -75,7 +75,7 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::getConfigForPlatform
+     * covers ::getConfigForPlatform
      * @expectedException axy\config\errors\PlatformNotExists
      */
     public function testErrorPlatformNotExists()
@@ -84,7 +84,7 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::getConfigForPlatform
+     * covers ::getConfigForPlatform
      */
     public function testRootPlatform()
     {
@@ -126,7 +126,7 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::getConfigForPlatform
+     * covers ::getConfigForPlatform
      */
     public function testInheritPlatform()
     {
@@ -157,7 +157,7 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::getConfigForPlatform
+     * covers ::getConfigForPlatform
      */
     public function testMultiInheritPlatform()
     {
@@ -202,7 +202,7 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::getConfigForPlatform
+     * covers ::getConfigForPlatform
      */
     public function testLoader()
     {
@@ -241,7 +241,7 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::getConfigForPlatform
+     * covers ::getConfigForPlatform
      */
     public function testCacheData()
     {

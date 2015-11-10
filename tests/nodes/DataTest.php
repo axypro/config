@@ -8,7 +8,7 @@ namespace axy\config\tests\node;
 use axy\config\nodes\Data;
 
 /**
- * @coversDefaultClass axy\config\nodes\Data
+ * coversDefaultClass axy\config\nodes\Data
  */
 class DataTest extends \PHPUnit_Framework_TestCase
 {

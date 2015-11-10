@@ -37,12 +37,13 @@ class LoaderPhp
     /**
      * Returns a parent value
      *
-     * @param boolean $notmerge [optional]
+     * @param boolean $notMerge [optional]
      *        a config should not merge
+     * @return mixed
      */
-    public function getParent($notmerge = true)
+    public function getParent($notMerge = true)
     {
-        $this->merge = !$notmerge;
+        $this->merge = !$notMerge;
         return $this->getparent ? call_user_func($this->getparent) : null;
     }
 
@@ -76,14 +77,4 @@ class LoaderPhp
      * @var boolean
      */
     private $merge = true;
-
-    /**
-     * @var mixed
-     */
-    private $value;
-
-    /**
-     * @var boolean
-     */
-    private $loaded = false;
 }

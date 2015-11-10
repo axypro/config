@@ -9,12 +9,12 @@ use axy\config\helpers\finders\Dirs;
 use axy\config\helpers\Log;
 
 /**
- * @coversDefaultClass axy\config\helpers\finders\Dirs
+ * coversDefaultClass axy\config\helpers\finders\Dirs
  */
 class DirsTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers ::getFilename
+     * covers ::getFilename
      */
     public function testGetFilename()
     {
@@ -39,7 +39,7 @@ class DirsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::getList
+     * covers ::getList
      */
     public function testGetList()
     {

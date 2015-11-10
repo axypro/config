@@ -26,13 +26,14 @@ class Loader
     /**
      * Returns a parent value
      *
-     * @param boolean $notmerge [optional]
+     * @param boolean $notMerge [optional]
      *        a config should not merge
+     * @return mixed
      */
-    public static function getParent($notmerge = true)
+    public static function getParent($notMerge = true)
     {
         if (self::$loader) {
-            return self::$loader->getParent($notmerge);
+            return self::$loader->getParent($notMerge);
         }
         return null;
     }
