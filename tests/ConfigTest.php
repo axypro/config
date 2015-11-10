@@ -16,17 +16,17 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
     protected $dir;
 
     /**
-     * @param callable $defparent [optional]
+     * @param callable $defParent [optional]
      * @return \axy\config\Config
      */
-    private function createConfig($defparent = null)
+    private function createConfig($defParent = null)
     {
         $this->dir = __DIR__.'/tst/config';
         $settings = [
             'dir' => $this->dir,
         ];
-        if ($defparent) {
-            $settings['defparent'] = $defparent;
+        if ($defParent) {
+            $settings['defparent'] = $defParent;
         }
         return new Config($settings);
     }
@@ -64,12 +64,12 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
         Log::reset();
         $config = $this->createConfig();
         $this->assertTrue($config->isPlatformExists('dev'));
-        $this->assertFalse($config->isPlatformExists('undev'));
+        $this->assertFalse($config->isPlatformExists('unDev'));
         $this->assertTrue($config->isPlatformExists('dev'));
-        $this->assertFalse($config->isPlatformExists('undev'));
+        $this->assertFalse($config->isPlatformExists('unDev'));
         $expected = [
             'is_dir:'.$this->dir.'/dev',
-            'is_dir:'.$this->dir.'/undev',
+            'is_dir:'.$this->dir.'/unDev',
         ];
         $this->assertEquals($expected, Log::get());
     }
@@ -80,7 +80,7 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
      */
     public function testErrorPlatformNotExists()
     {
-        $this->createConfig()->getConfigForPlatform('undev');
+        $this->createConfig()->getConfigForPlatform('unDev');
     }
 
     /**

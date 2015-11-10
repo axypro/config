@@ -30,7 +30,7 @@ class Config
         }
         $this->dir = $settings['dir'];
         if (isset($settings['defparent'])) {
-            $this->defparent = $settings['defparent'];
+            $this->defParent = $settings['defparent'];
         }
         $this->finder = new Dirs($this->dir);
     }
@@ -49,12 +49,12 @@ class Config
             if ($dirname === null) {
                 throw new PlatformNotExists($name, null, $this);
             }
-            if ($this->defparent) {
-                $parentname = call_user_func($this->defparent, $name);
+            if ($this->defParent) {
+                $parentName = call_user_func($this->defParent, $name);
             } else {
-                $parentname = ($name === 'base') ? null : 'base';
+                $parentName = ($name === 'base') ? null : 'base';
             }
-            $this->platforms[$name] = new Root($dirname, $name, $this, $parentname);
+            $this->platforms[$name] = new Root($dirname, $name, $this, $parentName);
         }
         return $this->platforms[$name];
     }
@@ -98,5 +98,5 @@ class Config
     /**
      * @var callable
      */
-    private $defparent;
+    private $defParent;
 }

@@ -27,13 +27,13 @@ class LoaderTest extends \PHPUnit_Framework_TestCase
         Log::reset();
         $filename = __DIR__.'/../tst/loader/'.$file.'.php';
         if ($parent !== null) {
-            $getparent = function () use ($parent) {
+            $getParent = function () use ($parent) {
                 return $parent;
             };
         } else {
-            $getparent = null;
+            $getParent = null;
         }
-        $loader = new LoaderPhp($filename, $getparent);
+        $loader = new LoaderPhp($filename, $getParent);
         $actual = $loader->load();
         if (is_array($expected)) {
             $this->assertEquals($expected, $actual);

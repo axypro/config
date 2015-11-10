@@ -17,13 +17,13 @@ class LoaderPhp
      *
      * @param string $filename
      *        a name of the config file
-     * @param callable $getparent [optional]
+     * @param callable $getParent [optional]
      *        a callback to get the parent value
      */
-    public function __construct($filename, $getparent = null)
+    public function __construct($filename, $getParent = null)
     {
         $this->filename = $filename;
-        $this->getparent = $getparent;
+        $this->getParent = $getParent;
     }
 
     /**
@@ -44,7 +44,7 @@ class LoaderPhp
     public function getParent($notMerge = true)
     {
         $this->merge = !$notMerge;
-        return $this->getparent ? call_user_func($this->getparent) : null;
+        return $this->getParent ? call_user_func($this->getParent) : null;
     }
 
     /**
@@ -57,8 +57,8 @@ class LoaderPhp
         Log::write('include:'.$this->filename);
         /** @noinspection PhpIncludeInspection */
         $data = include($this->filename);
-        if (is_array($data) && $this->merge && $this->getparent) {
-            $parent = call_user_func($this->getparent);
+        if (is_array($data) && $this->merge && $this->getParent) {
+            $parent = call_user_func($this->getParent);
             $data = Merger::merge($parent, $data);
         }
         return $data;
@@ -72,7 +72,7 @@ class LoaderPhp
     /**
      * @var array
      */
-    private $getparent;
+    private $getParent;
 
     /**
      * @var boolean

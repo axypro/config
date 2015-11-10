@@ -19,9 +19,9 @@ class LoaderMock
         self::$log[] = $this->name.':notMerge';
     }
 
-    public function getParent($notmerge = true)
+    public function getParent($notMerge = true)
     {
-        self::$log[] = $this->name.':getParent:'.($notmerge ? 1 : 0);
+        self::$log[] = $this->name.':getParent:'.($notMerge ? 1 : 0);
     }
 
     private $name;

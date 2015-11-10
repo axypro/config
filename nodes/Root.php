@@ -30,7 +30,7 @@ class Root extends Base implements IRootNode
         $this->name = $name;
         $this->container = $container;
         $this->finder = new Files($dirname, 'php');
-        $this->parentname = $parentName;
+        $this->parentName = $parentName;
         parent::__construct('', $this);
     }
 
@@ -47,9 +47,9 @@ class Root extends Base implements IRootNode
      */
     public function getParentPlatform()
     {
-        if ($this->parentname !== null) {
-            $this->parent = $this->container->getConfigForPlatform($this->parentname);
-            $this->parentname = null;
+        if ($this->parentName !== null) {
+            $this->parent = $this->container->getConfigForPlatform($this->parentName);
+            $this->parentName = null;
         }
         return $this->parent;
     }
@@ -160,7 +160,7 @@ class Root extends Base implements IRootNode
     /**
      * @var string
      */
-    private $parentname;
+    private $parentName;
 
     /**
      * @var \axy\config\helpers\finders\Files

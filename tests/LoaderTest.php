@@ -23,11 +23,14 @@ class LoaderTest extends \PHPUnit_Framework_TestCase
         $l1 = new LoaderMock('a');
         $l2 = new LoaderMock('b');
         $l3 = new LoaderMock('c');
+        /** @noinspection PhpParamsInspection */
         SetterLoader::push($l1);
         Loader::notMerge();
+        /** @noinspection PhpParamsInspection */
         SetterLoader::push($l2);
         Loader::getParent();
         Loader::notMerge();
+        /** @noinspection PhpParamsInspection */
         SetterLoader::push($l3);
         Loader::getParent(false);
         $this->assertSame($l3, SetterLoader::pop());
