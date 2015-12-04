@@ -1,3 +1,7 @@
+### dev-master
+
+* Travis
+
 ### 0.0.2 (10.11.2015)
 
 * Exclude styles, docs and etc from GitHub zip and Composer package dist
