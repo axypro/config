@@ -24,13 +24,15 @@ class Root extends Base implements IRootNode
      *        a config container
      * @param callable $parentName [optional]
      *        a name of a parent platform
+     * @param \axy\config\IExternal $external [optional]
      */
-    public function __construct($dirname, $name, Config $container, $parentName = null)
+    public function __construct($dirname, $name, Config $container, $parentName = null, $external = null)
     {
         $this->name = $name;
         $this->container = $container;
         $this->finder = new Files($dirname, 'php');
         $this->parentName = $parentName;
+        $this->external = $external;
         parent::__construct('', $this);
     }
 
@@ -72,6 +74,9 @@ class Root extends Base implements IRootNode
         }
         $parent = $this->getParentPlatform();
         if (!$parent) {
+            if ($this->external) {
+                return $this->external->isExists($key);
+            }
             return false;
         }
         return $parent->__isset($key);
@@ -130,15 +135,35 @@ class Root extends Base implements IRootNode
             $loader = new LoaderPhp($filename, $getParent);
             SetterLoader::push($loader);
             $child = $loader->load();
+            if ($this->external) {
+                $ex = $this->external->get($key);
+                if (is_array($ex) && is_array($child)) {
+                    $child = array_replace_recursive($ex, $child);
+                }
+            }
             SetterLoader::pop();
         } elseif ($parent) {
             /** @noinspection PhpUndefinedMethodInspection */
             $child = $parent->childGetData($key);
         } else {
+            $child = $this->getFromExternal($key);
+        }
+        $this->datas[$key] = $child;
+        return $child;
+    }
+
+    /**
+     * @param string $key
+     * @return mixed
+     */
+    private function getFromExternal($key)
+    {
+        if ($this->external && $this->external->isExists($key)) {
+            $child = $this->external->get($key);
+        } else {
             assert('false', 'a child must exist');
             $child = null;
         }
-        $this->datas[$key] = $child;
         return $child;
     }
 
@@ -171,4 +196,9 @@ class Root extends Base implements IRootNode
      * @var array
      */
     private $datas = [];
+
+    /**
+     * @var \axy\config\IExternal
+     */
+    private $external;
 }

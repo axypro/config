@@ -7,6 +7,7 @@ namespace axy\config\tests;
 
 use axy\config\Config;
 use axy\config\helpers\Log;
+use axy\config\tests\tst\external\TestExternal;
 
 /**
  * coversDefaultClass axy\config\Config
@@ -252,5 +253,29 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, Log::get(true));
         $base->get('arr');
         $this->assertEquals([], Log::get(true));
+    }
+
+    public function testExternal()
+    {
+        $settings = [
+            'dir' => __DIR__.'/tst/external',
+            'external' => new TestExternal,
+        ];
+        $container = new Config($settings);
+        $config = $container->getConfigForPlatform('test');
+        $this->assertTrue(isset($config->one->d->h));
+        $this->assertTrue(isset($config->one->i));
+        $this->assertFalse(isset($config->one->j));
+        $this->assertTrue(isset($config->three));
+        $this->assertSame(11, $config->one->a);
+        $this->assertSame(2, $config->one->b);
+        $this->assertSame(3, $config->one->c);
+        $this->assertSame(4, $config->one->d->e);
+        $this->assertSame(15, $config->one->d->f);
+        $this->assertSame(6, $config->one->d->g);
+        $this->assertSame(77, $config->one->d->h);
+        $this->assertSame(88, $config->one->i);
+        $this->assertSame('x', $config->two);
+        $this->assertSame('w', $config->three->qq);
     }
 }

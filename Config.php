@@ -32,6 +32,9 @@ class Config
         if (isset($settings['defparent'])) {
             $this->defParent = $settings['defparent'];
         }
+        if (isset($settings['external'])) {
+            $this->external = $settings['external'];
+        }
         $this->finder = new Dirs($this->dir);
     }
 
@@ -54,7 +57,8 @@ class Config
             } else {
                 $parentName = ($name === 'base') ? null : 'base';
             }
-            $this->platforms[$name] = new Root($dirname, $name, $this, $parentName);
+            $external = ($parentName === null) ? $this->external : null;
+            $this->platforms[$name] = new Root($dirname, $name, $this, $parentName, $external);
         }
         return $this->platforms[$name];
     }
@@ -99,4 +103,9 @@ class Config
      * @var callable
      */
     private $defParent;
+
+    /**
+     * @var \axy\config\IExternal
+     */
+    private $external;
 }

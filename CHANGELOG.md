@@ -1,5 +1,8 @@
 ### dev-master
 
+### 0.0.3 (03.06.2016)
+
+* External
 * Travis & Coveralls
 
 ### 0.0.2 (10.11.2015)
