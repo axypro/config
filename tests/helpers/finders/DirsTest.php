@@ -58,6 +58,5 @@ class DirsTest extends \PHPUnit_Framework_TestCase
             'glob:'.$dir.'/*',
         ];
         $this->assertEquals($expected, Log::get());
-
     }
 }

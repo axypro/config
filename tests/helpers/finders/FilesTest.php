@@ -58,7 +58,6 @@ class FilesTest extends \PHPUnit_Framework_TestCase
             'glob:'.$dir.'/*.txt',
         ];
         $this->assertEquals($expected, Log::get());
-
     }
 
     /**
